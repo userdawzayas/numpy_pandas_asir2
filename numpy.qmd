@@ -1,0 +1,10 @@
+---
+title: "NumPy: Lo básico para principiantes"
+author: "Documentación oficial de NumPy (Traducción al español)"
+format: html
+jupyter: python3
+---
+
+```{python}
+import numpy as np
+```
