@@ -26,3 +26,161 @@ b[0] = 40
 print(f"b: {b}")
 print(f"a: {a}")
 ```
+
+```{python}
+a = np.array([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]])
+a.shape
+```
+
+```{python}
+a[1, 2]
+```
+
+```{python}
+a[:2, :2]
+```
+
+```{python}
+print(a.shape)
+print(a.ndim)
+print(a.size)
+print(a.dtype)
+```
+
+```{python}
+a = np.array([1, "2", 3])
+print(a.dtype)
+```
+
+```{python}
+a = np.ones((3, 4))
+print(a)
+```
+
+```{python}
+a = np.arange(3,10, 2)
+print(a)
+```
+
+```{python}
+a = np.linspace(0, 1, 5)
+print(a)
+```
+
+
+```{python}
+arr = np.array([2, 1, 5, 3, 7, 4, 6, 8])
+arr.sort()
+print(arr)
+```
+
+
+
+```{python}
+x = np.array([[1, 2], [3, 4]])
+y = np.array([[5, 6]])
+print(x.shape)
+print(y.shape)
+
+np.concatenate((x, y), axis=0)
+```
+
+```{python}
+a = np.arange(6)
+print(a, a.shape)
+print(a.reshape((2, 3)))
+print(a.reshape((1, 6)))
+print(a.reshape((6, 1)))
+print(a.reshape((1,1,2,1,3, 1)))
+print(a.reshape((-1,2)))
+```
+
+
+```{python}
+data = np.array([1, 2, 3, 4, 5, 6, 7, 8])
+print(data[0])
+print(data[0:1])
+print(data[0:2])
+print(data[2:])
+print(data[-2:])
+
+print(data[[0, 2, 6]])
+print(data[[False, True, False, True, True, False, True, False]])
+``` 
+
+```{python}
+print(data * 2)
+data2 = np.array([4, 5, 6])
+print(data + data2)
+```
+
+```{python}
+a = np.array([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]])
+print(a >= 5)
+
+print(a[a >= 5])
+print(a[(a >= 5) & (a <= 10)])
+print(a[(a <= 5) | (a >= 10)])
+print(a[a % 2 == 0])
+``` 
+
+```{python}
+a = np.array([[1, 2], [3, 4]])
+print(a.sum())
+print(a.sum(axis=0))
+print(a.sum(axis=1))
+print(a.sum(axis=0, keepdims=True))
+print(a.sum(axis=1, keepdims=True))
+print(a.min(axis=0, keepdims=True))
+```
+
+
+```{python}
+a = np.array([1, 2, 3, 4])
+b = np.array([5, 6, 7, 8])
+print(a + b)
+```
+
+```{python}
+a = np.array([1, 2, 3, 4])
+print(a + 5)
+
+b = np.array([5])
+
+print(a + b)
+```
+
+
+```{python}
+a = np.array([[1, 2], [3, 4]])
+print(a + 5)
+
+b = np.array([3, 5])
+
+print(a + b)
+```
+
+```{python}
+np.random.seed(0)
+print(np.random.rand(3, 4))
+print(np.random.randint(1, 10, (3, 4)))
+```
+
+
+```{python}
+a = np.array([11, 11, 12, 13, 14, 15, 16, 17, 12, 13, 11, 14, 18, 19, 20])
+print(np.unique(a))
+print(np.unique(a, return_counts=True))
+print(np.unique(a, return_index=True))
+```
+
+
+```{python}
+a_2d = np.array([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [1, 2, 3, 4]])
+print(np.unique(a_2d, axis=0))
+``` 
+
+
+
+
+
