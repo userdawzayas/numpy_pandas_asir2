@@ -1,0 +1,202 @@
+
+```{python}
+import numpy as np
+import pandas as pd
+```
+
+
+
+```{python}
+s = pd.Series([1, 3, 5, np.nan, 6, 8])
+s
+```
+
+```{python}
+df2 = pd.DataFrame(
+    {
+        "A": 1.0,
+        "B": [1, 2, 3, 4],
+        "C": pd.Series(1, index=list(range(4)), dtype="float32"),
+        "D": np.array([3] * 4, dtype="int32"),
+        "E": pd.Categorical(["test", "train", "test", "train"]),
+        "F": "foo",
+    }
+)
+
+df2
+```
+
+
+``` {python}
+dates = pd.date_range("20130101", periods=600)
+
+dates
+```
+
+
+
+```{python}
+df = pd.DataFrame(np.random.randn(600, 4), index=dates, columns=list("ABCD"))
+df
+```
+
+```{python}
+df.to_numpy()
+```
+
+```{python}
+df2["E"].value_counts()
+```
+
+
+```{python}
+print(df)
+df.sort_values(by=["B", "C"], ascending=[True, False])
+```
+
+
+
+```{python}
+df.sort_index(axis=0, ascending=False)
+``` 
+
+
+```{python}
+df.T
+```
+
+
+
+```{python}
+df[["C", "A", "D", "B"]]
+```
+
+
+
+```{python}
+df[0:3]
+```
+
+
+
+```{python}
+df["20130102":"20130104"]
+```
+
+
+
+```{python}
+df.loc["20130102":"20130104", ["A", "B"]]
+```
+
+```{python}
+df.iloc[3:5, :]
+``` 
+
+```{python}
+df[df > 0].dropna()
+``` 
+
+
+
+```{python}
+print(df.mean())
+df.mean(axis=1)
+```
+
+
+
+```{python}  
+df3 = df.agg(lambda x: x - np.mean(x), axis=0)
+df3.mean()
+```
+
+
+
+```{python}
+df = pd.DataFrame(
+    {
+        "A": ["foo", "bar", "foo", "bar", "foo", "bar", "foo", "foo"],
+        "B": ["one", "one", "two", "three", "two", "two", "one", "three"],
+        "C": np.random.randn(8),
+        "D": np.random.randn(8),
+    }
+)
+
+df
+```
+
+```{python}
+df.groupby("A")[["C", "D"]].sum()
+``` 
+
+
+```{python}
+df.groupby(["A", "B"]).sum()
+``` 
+
+
+```{python}
+df = pd.DataFrame(
+    {
+        "A": ["one", "one", "two", "three"] * 3,
+        "B": ["A", "B", "C"] * 4,
+        "C": ["foo", "foo", "foo", "bar", "bar", "bar"] * 2,
+        "D": np.random.randn(12),
+        "E": np.random.randn(12),
+    }
+)
+
+df
+```
+
+```{python}
+pd.pivot_table(df, values="D", index=["A", "B"], columns=["C"])
+```
+
+
+```{python}
+from plotnine import *
+from plotnine.data import penguins
+
+penguins.dtypes
+
+```
+
+
+```{python}
+ggplot(penguins, aes(x="bill_length_mm", y="bill_depth_mm", color="species", shape="species"))  + geom_point() + labs(title="Adelie penguins")
+```
+
+
+
+```{python}
+grafico = (
+    ggplot(penguins, aes(x='bill_length_mm', y='bill_depth_mm', color='species'))
+    + geom_point(alpha=0.7, size=2)
+    + geom_smooth(method='lm', se=False)  # Añade línea de tendencia
+    + facet_wrap('~species')               # Separa un panel por cada especie
+    + labs(
+        title='Relación entre longitud y profundidad del pico por especie',
+        x='Longitud del pico (mm)',
+        y='Profundidad del pico (mm)',
+        color='Especie'
+    )
+    + theme_bw()
+)
+
+grafico
+```
+
+```{python}
+df = pd.DataFrame(np.random.randint(0, 5, (10, 5)))
+df
+df.to_csv("data.csv", index=False, sep=",")
+```
+
+
+
+```{python}
+df2 = pd.read_csv("data.csv")
+df2
+```

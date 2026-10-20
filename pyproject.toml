@@ -10,6 +10,8 @@ requires-python = ">=3.12"
 dependencies = [
     "jupyter>=1.1.1",
     "numpy>=2.5.4",
+    "pandas>=3.0.6",
+    "plotnine>=0.15.8",
 ]
 
 [project.scripts]
